@@ -11,7 +11,7 @@ export default function App() {
 
 
 function Card() {
-  <div> cart component</div>
+  return <div> cart component</div>
   
 }
 

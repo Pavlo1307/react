@@ -1,24 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Users from "./conponents/users/Users";
+import Menu from "./conponents/menu/Menu";
 export default function App() {
   return (
     <div>
-        <Heading title='title 1 ' desc='desc 1'/>
-        <Heading title='title 2' desc='desc 2'/>
-        <Heading/>
+        <Menu/>
+        <Users/>
     </div>
   );
 }
 
-
-function Heading(props) {
-  return (
-      <div>
-          <h2>{props.title}</h2>
-          <p>{props.desc}</p>
-      </div>
-  );
-}
 
 

@@ -4,15 +4,21 @@ import './App.css';
 export default function App() {
   return (
     <div>
-      <Card/>
+        <Heading/>
+        <Heading/>
+        <Heading/>
     </div>
   );
 }
 
 
-function Card() {
-  return (<div> cart component</div>)
-  
+function Heading() {
+  return (
+      <div>
+          <h2>Some heading</h2>
+          <p>some description</p>
+      </div>
+  );
 }
 
 

@@ -5,8 +5,9 @@ import Menu from "./conponents/menu/Menu";
 export default function App() {
   return (
     <div>
-        <Menu/>
+        <Menu pages={['user page', 'comments page']}/>
         <Users/>
+        <Menu pages={['about', 'team']}/>
     </div>
   );
 }

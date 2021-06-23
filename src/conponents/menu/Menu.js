@@ -1,6 +1,10 @@
+
 export default function Menu(props){
 
+    let {pages} = props;
     return(
-        <div></div>
+        <ul>
+            pages.map(page => <li>{pages}</li>)
+        </ul>
     );
 }

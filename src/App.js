@@ -1,11 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-    </div>
-  );
-}
+let options = {
+    baseURI:'jsonplace'
+};
 
-export default App;
+let axiosInstance = axios.create();
+axiosInstance()
+

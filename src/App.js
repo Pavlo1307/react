@@ -13,14 +13,6 @@ function App() {
   let [posts, setPosts] = useState([]);
   let [coments, setComents] = useState([]);
 
-  let appFn =(id) =>{
-    getUsers(id).then(value => setUsers(value.data));
-
-  };
-
-
-
-
   useEffect(()=>{
     getUsers().then(value => setUsers(value.data));
 
@@ -49,8 +41,8 @@ function App() {
       <Link to={'/coments'}> clik coments</Link>
 
       <Switch>
-      <Route path={'/users'} render={()=><Users items={users}/>}/>
-      <Route path={'/posts'} render={()=><Posts items={posts}/>}/>
+      <Route path={'/users'} render={()=><Users items={users} />}/>
+      <Route path={'/posts'} render={()=><Posts items={posts} />}/>
       <Route path={'/coments'} render={()=><Coments items={coments}/>}/>
       </Switch>
 

@@ -1,14 +1,15 @@
 import {useState} from "react";
-import User from "../users/user/User";
+import Post from "./post/Post";
 
 
-export default function Users({items}){
+
+export default function Posts({items}){
 
     return(
         <div>
             {
 
-                //items.map((value) => <Post key={userId.id} item={value} />)
+                items.map((value) => <Post key={value.id} item={value} />)
 
             }
 

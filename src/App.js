@@ -5,6 +5,7 @@ import Posts from "./components/posts/Posts";
 import Coments from "./components/coments/Coments";
 import {useEffect, useState} from "react";
 import {getUsers} from "./components/servises/API";
+import {getPosts} from "./components/servises/API";
 
 function App() {
 
@@ -25,6 +26,11 @@ function App() {
 
   },[])
 
+  useEffect(()=>{
+    getPosts().then(value => setPosts(value.data));
+
+  },[])
+
 
 
   return (
@@ -39,7 +45,7 @@ function App() {
 
       <Switch>
       <Route path={'/users'} render={()=><Users items={users}/>}/>
-      <Route path={'/posts'} render={()=><Users items={users}/>}/>
+      <Route path={'/posts'} render={()=><Posts items={posts}/>}/>
       <Route path={'/coments'} component={Coments}/>
       </Switch>
 

@@ -4,14 +4,14 @@ import Users from "./components/users/Users";
 import Posts from "./components/posts/Posts";
 import Coments from "./components/coments/Coments";
 import {useEffect, useState} from "react";
-import {getUsers} from "./components/servises/API";
+import {getComents, getUsers} from "./components/servises/API";
 import {getPosts} from "./components/servises/API";
 
 function App() {
 
   let [users, setUsers] = useState([]);
-  let [posts, setPosts] = useState([])
-  //let [user, setUser] = useState(null);
+  let [posts, setPosts] = useState([]);
+  let [coments, setComents] = useState([]);
 
   // let appFn =(id) =>{
   //   getUsers(id).then(value => setUsers(value.data));
@@ -31,6 +31,11 @@ function App() {
 
   },[])
 
+  useEffect(()=>{
+    getComents().then(value => setComents(value.data));
+
+  },[])
+
 
 
   return (
@@ -46,7 +51,7 @@ function App() {
       <Switch>
       <Route path={'/users'} render={()=><Users items={users}/>}/>
       <Route path={'/posts'} render={()=><Posts items={posts}/>}/>
-      <Route path={'/coments'} component={Coments}/>
+      <Route path={'/coments'} render={()=><Coments items={coments}/>}/>
       </Switch>
 
 

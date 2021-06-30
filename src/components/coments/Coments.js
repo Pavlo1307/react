@@ -1,8 +1,16 @@
-export default function Coments(){
+import Coment from "./coment/coment";
+
+export default function Coments({items}){
 
     return(
         <div>
-            Coments
+            {
+
+                items.map((value) => <Coment key={value.id} item={value} />)
+
+            }
+
+
         </div>
     );
 }

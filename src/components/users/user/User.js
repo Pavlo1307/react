@@ -5,19 +5,21 @@ export default function User({item}){
 
 
     const [userPosts, setUserPosts] = useState([]);
+    const [toggle, setToggle] = useState(false);
 
-    function click() {
-        getUsersPost(item.id).then(value => setUserPosts(value.data));
+     function click() {
+         getUsersPost(item.id).then(value => setUserPosts(value.data));
+         setToggle(!toggle);
     }
 
 
     return(
         <div>
-            {item.id} - {item.name} - <button onClick={click}> clisk me</button>
+            {item.id} - {item.name} - <button onClick={click}> click me</button>
 
 
             {
-                userPosts.map(value => <div>{value.userId}--{value.title} </div>)
+                toggle && userPosts.map(value => <div>{value.userId}--{value.title} </div>)
             }
 
         </div>

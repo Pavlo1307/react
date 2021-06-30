@@ -14,7 +14,7 @@ export default function Post({item}){
         <div>
 
 
-            {item.id} - {item.email} - <button onClick={click}>Comments</button>
+            {item.id} - {item.title} - <button onClick={click}>Comments</button>
 
             {
                 postsComents.map(value => <div>{value.id}--{value.email} </div>)

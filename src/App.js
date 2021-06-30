@@ -13,10 +13,10 @@ function App() {
   let [posts, setPosts] = useState([]);
   let [coments, setComents] = useState([]);
 
-  // let appFn =(id) =>{
-  //   getUsers(id).then(value => setUsers(value.data));
-  //
-  // };
+  let appFn =(id) =>{
+    getUsers(id).then(value => setUsers(value.data));
+
+  };
 
 
 

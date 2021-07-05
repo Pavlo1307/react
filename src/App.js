@@ -1,11 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import Users from './components/users/Users'
+import {BrowserRouter as Router, Link,Switch,Route} from 'react-router-dom';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-    </div>
+      <Router>
+        <div>
+
+          <Link to={'/users'}>user page</Link>
+        <Switch>
+          <Route path={'/user'} component={Users}/>
+
+        </Switch>
+        </div>
+      </Router>
   );
 }
 
-export default App;
+

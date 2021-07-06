@@ -24,10 +24,10 @@ export default function All_posts(){
                     allPosts.map(value => <AllPost key={value.id} item={value}/>)
 
                 }
-
                 <Switch>
                     <Route exact path={'/posts/:id/comments'} component={Comments}/>
                 </Switch>
+
             </div>
     );
 }

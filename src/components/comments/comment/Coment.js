@@ -1,3 +1,4 @@
+import {useState} from "react";
 
 export default function Comment({item}){
 
@@ -6,7 +7,7 @@ export default function Comment({item}){
         <div>
 
             <br/>
-            {item.email}
+            {item.id}-{item.email}
 
         </div>
     );

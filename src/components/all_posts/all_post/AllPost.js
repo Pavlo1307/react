@@ -1,4 +1,5 @@
-import {Link} from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
+import Comments from "../../comments/Comments";
 
 export default function AllPost({item}){
 

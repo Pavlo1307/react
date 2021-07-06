@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 export default function Post({item}){
 
 
@@ -7,7 +7,7 @@ export default function Post({item}){
         <div>
 
                 <br/>
-                <div>{item.title}</div>
+                {item.title}
 
         </div>
     );

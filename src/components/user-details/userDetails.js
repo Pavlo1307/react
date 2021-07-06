@@ -9,7 +9,7 @@ export default function UserDetails(props){
         fetch('https://jsonplaceholder.typicode.com/users/'+id)
             .then(value => value.json())
             .then(value => {
-                console.log(value)
+
                 setUser({...value})
             })
     }, [id])

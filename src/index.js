@@ -4,14 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore} from "redux";
+import {Provider} from "react-redux";
 
 const initialState = {
-    counter:{
+    counter: {
         value:0
-    }
+    },
+    posts:[],
 }
 
 const reducer = (state = initialState, action) => {
+
     switch (action.type){
         case 'INC':{
             return{
@@ -19,6 +22,36 @@ const reducer = (state = initialState, action) => {
                 counter: {
                     value: state.counter.value + 1
                 }
+            }
+        }
+        case 'DEC':{
+            return {
+                ...state,
+                counter: {
+                    value: state.counter.value - 1
+                }
+            }
+        }
+        case 'RES':{
+            return {
+                ...state,
+                counter: {
+                    value: state.counter.value = 0
+                }
+            }
+        }
+        case 'INPUT_INC':{
+            return {
+                ...state,
+                counter: {
+                    value: state.counter.value + +action.payload
+                }
+            }
+        }
+        case 'ADD_POSTS':{
+            return {
+                ...state,
+                posts: action.payload
             }
         }
         default:
@@ -29,18 +62,20 @@ const reducer = (state = initialState, action) => {
 
 const store = createStore(reducer)
 
-const INCREMENT_ACTION = {
-    type: 'INC'
-}
-store.dispatch(INCREMENT_ACTION)
+// const INCREMENT_ACTION = {
+//     type: 'INC'
+// }
 
-store.subscribe(() =>{
-    console.log(store.getState())
-})
+
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Provider store={store}>
+            <App />
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

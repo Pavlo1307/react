@@ -3,9 +3,9 @@ import {useEffect, useState} from "react";
 import Post from "../posts/post/Post";
 import Comment from "./comment/Coment";
 
-export default function Comments(props){
+export default function Comments({id}){
 
-    let {id} = useParams();
+    // let {id} = useParams();
     let [comments, setComments] = useState([]);
 
     useEffect(() =>{

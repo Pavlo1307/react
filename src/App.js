@@ -4,6 +4,7 @@ import Users from "./components/users/Users";
 import UserDetails from "./components/user-details/userDetails";
 import Posts from "./components/posts/Posts";
 import All_posts from "./components/all_posts/All_posts";
+import Comments from "./components/comments/Comments";
 
 
 export default function App() {
@@ -19,6 +20,9 @@ export default function App() {
       <Switch>
         <Route  path={'/users'} component={Users}/>
         <Route  path={'/posts'} component={All_posts}/>
+
+
+
 
       </Switch>
 

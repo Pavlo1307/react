@@ -3,19 +3,22 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import Posts from "./posts/Posts";
 import {logDOM} from "@testing-library/react";
+import Users from "./users/Users";
 
 export default function App() {
 
     const dispatch = useDispatch();
-    let numberForInput = 0;
-    let [formState, setFormState] = useState({number:0, password:0})
+    let [formState, setFormState] = useState({number:'', password:''})
 
     function onSubmit(e){
-        e.preventDefault();
-        numberForInput = e.target.number.value
+        e.preventDefault()
+        dispatch({
+            type:'INPUT_INC',
+            payload: formState.number
+        })
     }
     function onChange(e){
-        setFormState({formState, [e.target.name]: e.target.value})
+        setFormState({...formState, [e.target.name]: e.target.value})
     }
 
   return (
@@ -41,18 +44,11 @@ export default function App() {
           <br/>
           <form onSubmit={onSubmit}>
               <input type="number" name={'number'} value={formState.number} onChange={onChange}/>
-              <button onClick={() =>{
-                  dispatch({
-                      type:'INPUT_INC',
-                      payload: numberForInput
-
-                  })
-              }
-              }>Input</button>
+              <button>Input</button>
           </form>
 
-
           {/*<Posts/>*/}
+          <Users/>
 
       </div>
 

@@ -4,7 +4,7 @@ import {useEffect} from "react";
 
 export default function Posts() {
 
-    const dispatch =useDispatch();
+    const dispatch = useDispatch();
 
     const posts =  useSelector(({posts}) =>posts);
 

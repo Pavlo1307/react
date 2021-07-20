@@ -2,18 +2,17 @@ import {useSelector} from "react-redux";
 import {useState} from "react";
 
 
-const CreateTodosForm = (onSubmit) =>{
+const CreateTodosForm = ({onSubmit}) =>{
 
     const [title, setTitle] = useState('');
-    const [descr, setDescr] = useState('');
+    const [descriptions, setDescriptions] = useState('');
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        //console.log(title, descr)
+        console.log(title, descriptions)
 
-        if(!title  || !descr)
 
-        onSubmit(title, descr)
+        onSubmit(title, descriptions)
 
     }
 
@@ -29,28 +28,31 @@ const CreateTodosForm = (onSubmit) =>{
             <input
                 type="text"
                 placeholder={'descriptions'}
-                value={descr}
-                onChange={({target:{value}})=>setDescr(value)}/>
+                value={descriptions}
+                onChange={({target:{value}})=>setDescriptions(value)}/>
             <br/>
             <br/>
-            <button type="submit" disabled={!title || !descr}>create todo </button>
+            <button type="submit" disabled={!title || !descriptions}>create todo </button>
         </form>
     );
 };
 
 export default function App() {
+
     const store = useSelector(state=> state)
     console.log(store)
-    const onTodoCreate = async (title, descr) =>{
-        if(!title  || !descr) return;
+    const onTodoCreate = async (title, description) => {
+        if(!title || !description) return;
 
-        const response = await fetch('http://localhost:8888',{
+        const response = await fetch('http://localhost:8888/create-todo', {
             method: 'POST',
-            body: JSON.stringify({title, descr})
+            body: JSON.stringify({title, description}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
-        const data = await response.json()
+        const data = await response.json();
         console.log(data)
-
     }
     return (
       <div>

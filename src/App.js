@@ -1,5 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {ADD_TODOS, PUSH_NEW_TODO, SET_LOADING_FALSE, SET_LOADING_TRUE} from "./redux/actionTypes";
+import {addTodo, pushNewTodo, setLoadingFalse, setLoadingTrue} from "./redux/actionsCreators";
 
 
 const CreateTodosForm = ({onSubmit}) =>{
@@ -51,8 +53,10 @@ const CreateTodosForm = ({onSubmit}) =>{
     );
 };
 
-const TodosLists = (todos, isLoading) =>{
 
+const TodosList = ({todos, isLoading}) => {
+
+    if(isLoading) return <h1>LOADING....</h1>
     return (
         <div>
             {todos.map(todo => (
@@ -68,20 +72,21 @@ const TodosLists = (todos, isLoading) =>{
 
 export default function App() {
 
-    const todos = useSelector(({todosReduser})=> todosReduser);
+    const {todos, isLoading} = useSelector(({todosReduser})=> todosReduser);
     const dispatch = useDispatch();
     useEffect(() =>{
         fetchTodos()
     },[])
     const fetchTodos = async () =>{
         try {
+            dispatch(setLoadingTrue())
             const response = await fetch('http://localhost:8888/get-todos')
             const data = await response.json();
-            dispatch({type:'ADD_TODOS', payload:data})
+            dispatch(addTodo(data))
         }catch (e){
             console.log(e)
         }finally {
-
+            dispatch(setLoadingFalse())
         }
 
 
@@ -98,12 +103,13 @@ export default function App() {
             }
         })
         const data = await response.json();
+        dispatch(pushNewTodo(data))
 
     }
     return (
       <div>
           <CreateTodosForm onSubmit={onTodoCreate}/>
-          <TodosLists todos={todos}/>
+          <TodosList todos={todos} isLoading={isLoading}/>
       </div>
         );
 }

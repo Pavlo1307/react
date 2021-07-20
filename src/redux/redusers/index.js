@@ -6,5 +6,4 @@ import {todosReduser} from "./todosReduser";
 export const rootReduser = combineReducers({
     counterReduser,
     todosReduser
-
 })

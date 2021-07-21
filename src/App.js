@@ -1,7 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {ADD_TODOS, PUSH_NEW_TODO, SET_LOADING_FALSE, SET_LOADING_TRUE} from "./redux/actionTypes";
-import {addTodo, pushNewTodo, setLoadingFalse, setLoadingTrue} from "./redux/actionsCreators";
+import {addTodo, delTodo, pushNewTodo, setLoadingFalse, setLoadingTrue} from "./redux/actionsCreators";
 
 
 const CreateTodosForm = ({onSubmit}) =>{
@@ -25,10 +24,6 @@ const CreateTodosForm = ({onSubmit}) =>{
         finally {
             setLoading(false);
         }
-
-
-
-
 
     }
 
@@ -54,25 +49,29 @@ const CreateTodosForm = ({onSubmit}) =>{
 };
 
 
-const TodosList = ({todos, isLoading}) => {
+const TodosList = ({todos, isLoading, deleteTodo, changeTodo}) => {
 
     if(isLoading) return <h1>LOADING....</h1>
     return (
         <div>
             {todos.map(todo => (
-                <div>
+                <div key={todo.id}>
                     <h4>{todo.title}</h4>
                     <p>{todo.description}</p>
+                    <span>Is complated? : {todo.completed.toString()}</span>
+                    <button onClick={()=> changeTodo(todo.id)}> change </button>
+                   <br/><br/>
+                    <button onClick={()=> deleteTodo(todo.id)}>delete</button>
                     <hr/>
                 </div>
             ))}
         </div>
     )
 }
-
 export default function App() {
 
     const {todos, isLoading} = useSelector(({todosReduser})=> todosReduser);
+    console.log(todos);
     const dispatch = useDispatch();
     useEffect(() =>{
         fetchTodos()
@@ -83,14 +82,16 @@ export default function App() {
             const response = await fetch('http://localhost:8888/get-todos')
             const data = await response.json();
             dispatch(addTodo(data))
+
         }catch (e){
             console.log(e)
         }finally {
             dispatch(setLoadingFalse())
         }
 
-
     }
+
+
 
     const onTodoCreate = async (title, description) => {
         if(!title || !description) return;
@@ -104,12 +105,33 @@ export default function App() {
         })
         const data = await response.json();
         dispatch(pushNewTodo(data))
-
     }
+
+    const deleteTodo = async (id) =>{
+        let response = await fetch('http://localhost:8888/delete-todo/' + id, {
+            method: 'DELETE'
+        });
+        dispatch(delTodo(id))
+        console.log(id)
+
+
+    };
+
+    const changeTodo = async (id)=>{
+        let response = await fetch('http://localhost:8888/update-todo/' + id, {
+            method: 'PATCH',
+            //body:
+
+
+
+        });
+        console.log()
+    }
+
     return (
       <div>
           <CreateTodosForm onSubmit={onTodoCreate}/>
-          <TodosList todos={todos} isLoading={isLoading}/>
+          <TodosList todos={todos} isLoading={isLoading} deleteTodo={deleteTodo} changeTodo={changeTodo}/>
       </div>
         );
 }

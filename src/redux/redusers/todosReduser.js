@@ -1,4 +1,4 @@
-import {ADD_TODOS, PUSH_NEW_TODO, SET_LOADING_FALSE, SET_LOADING_TRUE} from "../actionTypes";
+import {ADD_TODOS, DELETE_TODO, PUSH_NEW_TODO, SET_LOADING_FALSE, SET_LOADING_TRUE} from "../actionTypes";
 
 const initialState = {
     todos: [],
@@ -27,6 +27,12 @@ export const todosReduser = (state = initialState,action)=> {
                 return {
                     ...state, todos: [...state.todos, action.payload]
                 }
+        }
+        case DELETE_TODO:{
+            return {
+
+                ...state, todos: [...state.todos.filter(todo => todo.id !== action.payload)]
+            }
         }
         default:
             return state

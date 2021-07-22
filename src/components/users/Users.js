@@ -7,6 +7,7 @@ export default function Users({users}){
             {
                 users.map((user)=><User key={user.id} user={user}/>)
             }
+
         </div>
     );
 

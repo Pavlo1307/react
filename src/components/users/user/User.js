@@ -1,44 +1,22 @@
 import {useEffect, useState} from "react";
-import {getUsersPost} from "../../servises/API";
+import {getPost, getUsersPost} from "../../servises/API";
+import {logDOM} from "@testing-library/react";
 
 export default function User({user}){
 
     let [usersPosts, setUserPosts] = useState([]);
     const [toggle, setToggle] = useState(false);
+    let [post, setPost] = useState([])
 
     function showPosts() {
             getUsersPost(user.id).then(userPost => setUserPosts(userPost.data));
             setToggle(!toggle)
     }
 
-    function showInfo() {
-        getUsersPost(user.id).then(userPost => setUserPosts(userPost.data));
 
-        usersPosts.map(userPost=>
-            <div>
-                <p>dsdsd</p>
-                {userPost.title}
-                <br/>
-                {userPost.body}
-                <br/>
-            </div>
-        )
+    let showInfo = (id)=>{
+        getPost(id).then(post=>setPost(post.data))
     }
-
-    // const showInfo = ()=>{
-    //     usersPosts.map(userPost=>
-    //             <div>
-    //                 <p>dsdsd</p>
-    //                 {userPost.title}
-    //                 <br/>
-    //                 {userPost.body}
-    //                 <br/>
-    //             </div>
-    //         )
-    //
-    // }
-
-
 
 
     return(
@@ -50,12 +28,20 @@ export default function User({user}){
                 toggle && usersPosts.map(usersPost =>
                         <div>
                             {usersPost.id}--{usersPost.title} -
-                            <button onClick={showInfo}>show info</button>
+                            <button onClick={()=>showInfo(usersPost.id)}>show info</button>
                             <hr/>
+                            {console.log(usersPost.id)}
+                            {post.title}
+                            <br/>
+                            {post.body}
+                            <br/>
+
                         </div>
 
                 )
+
             }
+
         </div>
     );
 }

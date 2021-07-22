@@ -1,11 +1,12 @@
+import PostDetails from "./PostDetails";
 
-export default function UserDetails({post}){
+export default function UserDetails({usersPosts}){
 
     return(
         <div>
-            {post.title}
-            <br/>
-            {post.body}
+            {usersPosts.map(value=> <PostDetails post={value}/>)}
+
+
         </div>
     )
 

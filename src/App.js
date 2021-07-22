@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {addTodo, delTodo, pushNewTodo, setLoadingFalse, setLoadingTrue} from "./redux/actionsCreators";
+import {addTodo, delTodo, pushNewTodo, setLoadingFalse, setLoadingTrue, changeTodo} from "./redux/actionsCreators";
 
 
 const CreateTodosForm = ({onSubmit}) =>{
@@ -49,7 +49,7 @@ const CreateTodosForm = ({onSubmit}) =>{
 };
 
 
-const TodosList = ({todos, isLoading, deleteTodo, changeTodo}) => {
+const TodosList = ({todos, isLoading, deleteTodo, onChangeTodo}) => {
 
     if(isLoading) return <h1>LOADING....</h1>
     return (
@@ -59,7 +59,7 @@ const TodosList = ({todos, isLoading, deleteTodo, changeTodo}) => {
                     <h4>{todo.title}</h4>
                     <p>{todo.description}</p>
                     <span>Is complated? : {todo.completed.toString()}</span>
-                    <button onClick={()=> changeTodo(todo.id)}> change </button>
+                    <button onClick={()=> onChangeTodo(todo.id, todo.completed)}> change </button>
                    <br/><br/>
                     <button onClick={()=> deleteTodo(todo.id)}>delete</button>
                     <hr/>
@@ -114,24 +114,26 @@ export default function App() {
         dispatch(delTodo(id))
         console.log(id)
 
-
     };
 
-    const changeTodo = async (id)=>{
+    const onChangeTodo = async (id, completed)=>{
         let response = await fetch('http://localhost:8888/update-todo/' + id, {
             method: 'PATCH',
-            //body:
-
-
+            body: JSON.stringify({completed: !completed}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
 
         });
-        console.log()
+        const data = await response.json();
+        dispatch(changeTodo(data))
+        console.log(data);
     }
 
     return (
       <div>
           <CreateTodosForm onSubmit={onTodoCreate}/>
-          <TodosList todos={todos} isLoading={isLoading} deleteTodo={deleteTodo} changeTodo={changeTodo}/>
+          <TodosList todos={todos} isLoading={isLoading} deleteTodo={deleteTodo} onChangeTodo={onChangeTodo}/>
       </div>
         );
 }

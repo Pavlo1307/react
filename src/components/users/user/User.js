@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {getPost, getUsersPost} from "../../servises/API";
-import {logDOM} from "@testing-library/react";
+import UserDetails from "./userdetails/UserDetails";
+
 
 export default function User({user}){
 
@@ -30,17 +31,12 @@ export default function User({user}){
                             {usersPost.id}--{usersPost.title} -
                             <button onClick={()=>showInfo(usersPost.id)}>show info</button>
                             <hr/>
-                            {console.log(usersPost.id)}
-                            {post.title}
-                            <br/>
-                            {post.body}
                             <br/>
 
                         </div>
-
                 )
-
             }
+            <UserDetails post={post}/>
 
         </div>
     );

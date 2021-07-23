@@ -12,7 +12,6 @@ export default function UserPost({userPost}){
         setToggle(!toggle)
     }
 
-    console.log(postDetail)
     return(
         <div>
             {userPost.id}-{userPost.title} - <button onClick={()=>showInfo(userPost.id)}>Show info</button>

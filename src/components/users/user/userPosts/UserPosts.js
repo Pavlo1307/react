@@ -3,8 +3,8 @@ import UserPost from "./userPost/UserPost";
 export default function UserPosts({userPosts}){
 
     return(
-        <div>
-            {userPosts.map(value=> <UserPost userPost={value}/>)}
+        <div className={'user-posts'}>
+            {userPosts.map(value=> <UserPost key={value.id} userPost={value}/>)}
         </div>
     );
 }

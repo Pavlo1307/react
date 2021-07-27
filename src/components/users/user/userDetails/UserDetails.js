@@ -1,11 +1,10 @@
 import {useEffect, useState} from "react";
 import {getUserDetails} from "../../../servises/API";
+import {Link} from "react-router-dom";
 
 export default function UsersDetails({id}) {
 
     let [userDetails, setUsersDetails] = useState(null);
-
-
 
     useEffect(()=>{
         getUserDetails(id).then(value => setUsersDetails(value.data))

@@ -1,6 +1,7 @@
 import User from "./user/User";
 import {useEffect, useState} from "react";
 import {getUsers} from "../servises/API";
+import './Users.css'
 
 export default function Users({match:{url}}) {
 
@@ -11,7 +12,7 @@ export default function Users({match:{url}}) {
     },[])
 
     return(
-        <div>
+        <div className={'users'}>
             <h2> Users</h2>
             {
                 users.map((value)=><User

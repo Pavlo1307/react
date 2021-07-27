@@ -1,6 +1,7 @@
 import Comment from "./comment/Comment";
 import {useEffect, useState} from "react";
 import {getComments} from "../servises/API";
+import "./Comments.css"
 
 export default function Comments({match:{url}}) {
     console.log(url);
@@ -13,6 +14,7 @@ export default function Comments({match:{url}}) {
 
     return(
         <div>
+            <div className={'comments'}>
             <h2>Comments</h2>
             {
                 comments.map((value)=><Comment
@@ -21,6 +23,7 @@ export default function Comments({match:{url}}) {
                     url={url}
                 />)
             }
+            </div>
         </div>
     );
 }

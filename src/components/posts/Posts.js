@@ -1,6 +1,7 @@
 import Post from "./post/Post";
 import {useEffect, useState} from "react";
 import {getPosts} from "../servises/API";
+import "./Posts.css"
 
 export default function Posts({match:{url}}) {
 
@@ -12,6 +13,7 @@ export default function Posts({match:{url}}) {
 
     return(
         <div>
+            <div className={'posts'}>
             <h2>Posts</h2>
             {
                 posts.map((value)=><Post
@@ -20,6 +22,7 @@ export default function Posts({match:{url}}) {
                     url={url}
                 />)
             }
+            </div>
         </div>
     );
 }

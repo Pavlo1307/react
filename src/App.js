@@ -1,6 +1,4 @@
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {getComments, getPosts, getUsers} from "./components/servises/API";
 import Users from "./components/users/Users";
 import Comments from "./components/comments/Comments";
 import Posts from "./components/posts/Posts";
@@ -10,12 +8,11 @@ export default function App() {
   return (
       <Router>
         <div>
-            <Link to={'/users'}>show users</Link>
-            <br/>
-            <Link to={'/comments'}>show comments</Link>
-            <br/>
-            <Link to={'/posts'}>show posts</Link>
-
+            <div>
+                <Link to={'/users'}>Show users</Link>
+                <Link to={'/comments'}>Show comments</Link>
+                <Link to={'/posts'}>Show posts</Link>
+            </div>
 
             <Switch>
                 <Route path={'/users'} render={(props)=><Users {...props} />}/>

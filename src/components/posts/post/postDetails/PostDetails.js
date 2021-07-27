@@ -12,10 +12,11 @@ export default function PostDetails({id}) {
     },[id])
 
 
-
     return(
         <div>
-
+            {
+                postDetails  && <div> {postDetails.id} {postDetails.body}</div>
+            }
         </div>
     );
 }

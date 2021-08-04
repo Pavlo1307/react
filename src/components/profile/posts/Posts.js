@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Posts.module.css"
+import Post from "./post/Post";
 
 export default function Posts(){
  return(
@@ -11,8 +12,8 @@ export default function Posts(){
             </div>
         </div>
         <div className='posts'>
-            <Posts/>
-
+            <Post value="Hi its me" like = '10'/>
+            <Post value="You are beautiful" like = '15'/>
         </div>
     </div>
  );

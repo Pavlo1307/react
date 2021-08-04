@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Profile.module.css"
+import Posts from "./posts/Posts";
 
 
 export default function Profile(){
@@ -12,23 +13,10 @@ export default function Profile(){
             </div>
             <div>
                 <div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjYFV-bwRLTx5vbXeIRyRZDH86KNG-4ktGcg&usqp=CAU"
-                         alt="foto1"/>
-                </div>
-                <div>
                     desc
                 </div>
             </div>
-            <div>
-                POst
-                <div>
-                    new post
-                </div>
-            </div>
-            <div className='posts'>
-                <div className={classes.item}>post 1</div>
-                <div className={classes.item}>post 2</div>
-            </div>
+           <Posts/>
         </div>
     );
 }

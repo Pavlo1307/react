@@ -7,26 +7,24 @@ import Profile from "../profile/Profile";
 export default function NavMenu() {
 
     return (
-        <Router>
             <nav className={classes.nav}>
                 <div className={classes.item}>
-                    <Link to={'/profile'}>Profile</Link>
+                    <Link to={'/profile'} className={classes.activeLink}>Profile</Link>
                 </div>
                 <div className={classes.item}>
-                    <Link to={'/dialogs'}>Messages</Link>
+                    <Link to={'/dialogs'} className={classes.activeLink}>Dialogs</Link>
                 </div>
                 <div className={classes.item}>
-                    <a>News</a>
+                    <Link to={'/news'} >News</Link>
                 </div>
                 <div className={classes.item}>
-                    <a>Music</a>
+                    <Link to={'music'}>Music</Link>
                 </div>
                 <div className={classes.item}>
-                    <a>Settings</a>
+                    <Link to={'/settings'}>Settings</Link>
                 </div>
 
             </nav>
-        </Router>
     );
 
 }

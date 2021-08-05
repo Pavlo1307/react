@@ -12,6 +12,8 @@ export default function Posts(){
             </div>
         </div>
         <div className='posts'>
+            <textarea name="" id="" cols="20" rows="5"></textarea>
+            <button> add post</button>
             <Post value="Hi its me" like = '10'/>
             <Post value="You are beautiful" like = '15'/>
         </div>

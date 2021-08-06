@@ -1,28 +1,28 @@
-.dialogs{
-    display: grid;
-    grid-template-columns: 5fr 7fr;
-    padding: 10px;
+    .dialogs{
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        padding: 10px;
 
-}
+    }
 
-.dialogsItem{
-    text-decoration: none;
+    .dialogsItem{
+        text-decoration: none;
 
-}
-.dialogsItem .active{
-    color: red;
-}
-.dialog{
-    padding: 20px;
+    }
+    .dialogsItem .active{
+        color: red;
+    }
+    .dialog{
+        padding: 20px;
 
-}
+    }
 
-.messages{
-    padding-left: 20px;
+    .messages{
+        padding-left: 20px;
 
 
-}
+    }
 
-.message{
-    padding: 20px;
-}
+    .message{
+        padding: 20px;
+    }

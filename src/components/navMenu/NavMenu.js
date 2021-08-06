@@ -1,7 +1,8 @@
 import React from "react";
 import classes from './NavMenu.module.css'
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Switch, NavLink} from "react-router-dom";
 import Profile from "../profile/Profile";
+
 
 
 export default function NavMenu() {
@@ -9,19 +10,19 @@ export default function NavMenu() {
     return (
             <nav className={classes.nav}>
                 <div className={classes.item}>
-                    <Link to={'/profile'} className={classes.activeLink}>Profile</Link>
+                    <NavLink to={'/profile'} className={classes.activeLink}>Profile</NavLink>
                 </div>
                 <div className={classes.item}>
-                    <Link to={'/dialogs'} className={classes.activeLink}>Dialogs</Link>
+                    <NavLink to={'/dialogs'} className={classes.activeLink}>Dialogs</NavLink>
                 </div>
                 <div className={classes.item}>
-                    <Link to={'/news'} >News</Link>
+                    <NavLink to={'/news'} >News</NavLink>
                 </div>
                 <div className={classes.item}>
-                    <Link to={'music'}>Music</Link>
+                    <NavLink to={'music'}>Music</NavLink>
                 </div>
                 <div className={classes.item}>
-                    <Link to={'/settings'}>Settings</Link>
+                    <NavLink to={'/settings'}>Settings</NavLink>
                 </div>
 
             </nav>

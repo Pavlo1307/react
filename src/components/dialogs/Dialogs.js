@@ -3,7 +3,7 @@ import classes from "./Dialogs.module.css"
 import {getMessages, getUsers} from "../servises/API";
 import User from "./user/User";
 import Messages from "./messages/Messages";
-import {Route} from "react-router-dom";
+import {Route, Switch, Link} from "react-router-dom";
 
 
 export default function Dialogs() {
@@ -12,9 +12,8 @@ export default function Dialogs() {
     let [users, setUsers] = useState([]);
     useEffect(()=>{
         getUsers().then(value => setUsers(value.data))
-    })
-    let userid={users}
-    console.log(userid)
+    }, [])
+
 
     return (
         <div className={classes.dialogs}>
@@ -26,7 +25,9 @@ export default function Dialogs() {
             </div>
             <div className={classes.messages}>
                 <h2>Messages</h2>
-                <Route path={'/users'} render={() => <Messages />}/>
+                <Switch>
+                    <Route path={'/dialogs/users/:id'} component={Messages}/>
+                </Switch>
 
             </div>
         </div>
